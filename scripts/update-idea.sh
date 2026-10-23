@@ -1,0 +1,31 @@
+#!/bin/sh
+
+mkdir -p '.idea/runConfigurations' && cat >'.idea/runConfigurations/Update_Hooks.xml' <<-EOF
+	<component name="ProjectRunConfigurationManager">
+	    <configuration default="false" name="Update Hooks" type="ShConfigurationType" activateToolWindowBeforeRun="false">
+	        <option name="SCRIPT_TEXT" value="find .github/hooks -type f -exec chmod +x {} \; &amp;&amp; git config --local core.hooksPath .github/hooks" />
+	        <option name="INDEPENDENT_SCRIPT_PATH" value="true" />
+	        <option name="SCRIPT_PATH" value="" />
+	        <option name="SCRIPT_OPTIONS" value="" />
+	        <option name="INDEPENDENT_SCRIPT_WORKING_DIRECTORY" value="true" />
+	        <option name="SCRIPT_WORKING_DIRECTORY" value="" />
+	        <option name="INDEPENDENT_INTERPRETER_PATH" value="true" />
+	        <option name="INTERPRETER_PATH" value="/bin/sh" />
+	        <option name="INTERPRETER_OPTIONS" value="" />
+	        <option name="EXECUTE_SCRIPT_FILE" value="false" />
+	        <envs />
+	        <method v="2" />
+	    </configuration>
+	</component>
+EOF
+
+mkdir -p '.idea' && cat >'.idea/startup.xml' <<-EOF
+	<?xml version="1.0" encoding="UTF-8"?>
+	<project version="4">
+	    <component name="ProjectStartupSharedConfiguration">
+	        <configurations>
+	            <configuration id="Shell Script.Update Hooks" name="Update Hooks" />
+	        </configurations>
+	    </component>
+	</project>
+EOF
